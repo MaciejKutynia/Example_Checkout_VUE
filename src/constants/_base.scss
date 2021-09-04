@@ -1,0 +1,161 @@
+@import './_variables.scss';
+
+.title-bar {
+  font-size: 2rem;
+  width: 100%;
+  background: $barColor;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  .fas {
+    margin-right: 8px;
+  }
+}
+
+.control-radio {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  input {
+    display: none;
+  }
+  input:checked + label::before {
+    opacity: 1;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+    margin-left: 16px;
+    &::after {
+      content: '';
+      position: absolute;
+      top: calc(50% - 9px);
+      left: -16px;
+      border: 1px solid $redColor;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(50% - 5px);
+      left: -12px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: $redColor;
+      opacity: 0;
+    }
+  }
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    width: 80px;
+    margin-right: 10px;
+    margin-left: 20px;
+  }
+}
+
+.btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid $redColor;
+  color: $redColor;
+  background: none;
+  font-size: 1.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.control {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  input,
+  select {
+    width: 100%;
+    height: 100%;
+    border: 1px solid $inputBorderColor;
+    outline: none;
+    background: none;
+    border-radius: 4px;
+    padding: 10px 10px;
+    &:focus:invalid {
+      border: 1px solid red;
+    }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  &.postal {
+    display: flex;
+    justify-content: space-between;
+    input {
+      width: 48%;
+    }
+  }
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  .far {
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 15px;
+    cursor: pointer;
+  }
+}
+
+.label {
+  margin: 10px 30px;
+  position: relative;
+  display: block;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 12px;
+    height: 12px;
+    border: 1px solid $inputBorderColor;
+    border-radius: 2px;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: -16px;
+    width: 4px;
+    height: 7px;
+    border-top: 2px solid $redColor;
+    border-left: 2px solid $redColor;
+    transform: rotate(225deg);
+    opacity: 0;
+  }
+}
+
+#create-account,
+#another-address,
+#newsletter,
+#statute {
+  display: none;
+}
+
+#create-account:checked + .label,
+#another-address:checked + .label,
+#newsletter:checked + .label,
+#statute:checked + .label {
+  &::before {
+    opacity: 1;
+  }
+}
